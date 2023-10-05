@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+
+  <title>Frontend Mentor | Space tourism website</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;1,600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-image: url(./assets/home/background-home-desktop.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    header {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      margin: 0 auto;
+    }
+
+    nav {
+      width: 90%;
+      height: 100%;
+      margin-top: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.2vw;
+
+
+
+    }
+
+    .line {
+      background-color: rgba(255, 255, 255, 0.4);
+      height: 2px;
+      width: 50vw;
+      margin-left: 9vw;
+    }
+
+    .links {
+      display: flex;
+
+    }
+
+
+    .toggle_btn {
+      cursor: pointer;
+      display: none;
+
+    }
+
+    a {
+      display: flex;
+      text-decoration: none;
+
+    }
+
+    .links {
+      list-style: none;
+      font-weight: 700;
+      letter-spacing: 2px;
+      backdrop-filter: blur(23px);
+
+    }
+
+    .links li::after {
+      content: "";
+      width: 100%;
+      height: 3.6px;
+      background-color: rgb(232, 229, 229);
+      display: none;
+    }
+
+    .links li:hover::after {
+      display: block;
+    }
+
+    .option {
+      color: rgb(210, 197, 197);
+      margin: 23px;
+
+    }
+
+    .option p {
+      margin-left: 5px;
+
+    }
+
+    .dropdown {
+      position: absolute;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      width: 40%;
+      top: 0;
+      right: 0;
+      font-size: 23px;
+      font-weight: 800;
+      display: none;
+
+    }
+
+    .dropdown.open {
+      display: block;
+      justify-content: center;
+      height: 100vh;
+      z-index: 2;
+      backdrop-filter: blur(16px);
+
+    }
+
+
+
+
+    .dropdown p {
+      margin-left: 23px;
+    }
+
+    .droplinks {
+      margin-top: 150px;
+
+    }
+
+    .dropdown ul {
+      list-style: none;
+    }
+
+    .dropoption {
+      color: rgb(210, 197, 197);
+      margin: 30px auto 0 40px;
+
+    }
+
+    main {
+      width: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      gap: 100px;
+      margin-top: 200px;
+    }
+
+    .left {
+      max-width: 34%;
+
+    }
+
+    h3 {
+      font-size: 1.5vw;
+      letter-spacing: 0.1vw;
+      margin: 10px 0;
+    }
+
+    h1 {
+      font-size: 7vw;
+      font-family: 'Bellefair', serif;
+      margin-bottom: 20px;
+    }
+
+    .left .para {
+      font-size: 1.2vw;
+      font-weight: 800;
+      color: white;
+    }
+
+    .right {
+      width: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .right p {
+      position: absolute;
+      right: 10px;
+      top: 0px;
+      background-color: white;
+      padding: 58px 40px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: 900;
+      color: black;
+
+    }
+
+    .right p:hover {
+      background-color: rgb(142, 139, 139);
+    }
+
+
+
+    @media (max-width:1250px) {
+      .left {
+        max-width: 40%;
+
+      }
+
+      h3 {
+        font-size: 1.8vw;
+      }
+
+      h1 {
+        font-size: 8vw;
+      }
+
+      .left .para {
+        font-size: 1.3vw;
+      }
+    }
+
+    @media (max-width:1100px) {
+      main {
+        width: 90%;
+      }
+
+      .left {
+        max-width: 40%;
+      }
+
+      h3 {
+        font-size: 2.3vw;
+      }
+
+      h1 {
+        font-size: 10vw;
+      }
+
+      .left .para {
+        font-size: 1.8vw;
+      }
+    }
+
+    @media (max-width:850px) {
+      .links {
+        display: none;
+      }
+
+      .toggle_btn {
+        display: block;
+        z-index: 3;
+      }
+    }
+
+    @media (max-width:786px) {
+      body {
+        background-image: url(./assets/home/background-home-tablet.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+
+      }
+
+      main {
+        flex-direction: column;
+
+      }
+
+      .left {
+        max-width: 100%;
+        text-align: center;
+
+      }
+
+      .line {
+        display: none;
+      }
+
+      .right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-top: 5vw;
+
+      }
+
+      .right p {
+        right: 38%;
+
+
+      }
+
+      h3 {
+        font-size: 40px;
+        font-weight: 400;
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+
+      h1 {
+        font-size: 18vw;
+        margin: 30px 0 50px 0;
+
+      }
+
+      .left .para {
+        font-size: 20px;
+        font-weight: 400;
+
+      }
+
+    }
+
+    @media (max-width:701px) {
+      .dropdown {
+        width: 50%;
+      }
+
+    }
+
+    @media (max-width:488px) {
+      .dropdown {
+        width: 60%;
+      }
+
+      h3 {
+        font-size: 35px;
+      }
+    }
+
+    @media (max-width:584px) {
+      .right p {
+        right: 35%;
+      }
+    }
+
+    @media (max-width:472px) {
+      .right p {
+        right: 32%;
+      }
+    }
+
+    @media (max-width:480px) {
+      body {
+        background-image: url(./assets/home/background-home-mobile.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+
+      }
+    }
+
+    @media (max-width:384px) {
+      .right p {
+        right: 28%;
+      }
+    }
+
+    @media (max-width:445px) {
+      h1 {
+        font-size: 23vw;
+      }
+    }
+
+    @media (max-width:360px) {
+      .dropdown {
+        width: 93%;
+      }
+
+      .right p {
+        right: 28%;
+      }
+    }
+
+
+
+    @media (max-width:240px) {
+      .dropdown {
+        width: 100%;
+      }
+
+      .right p {
+        right: 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <img class="logo" src="assets/shared/logo.svg">
+      <div class="line"></div>
+      <ul class="links">
+        <li><a class="option" href="./index.html"><span>00</span>
+            <p>HOME</p>
+          </a></li>
+        <li><a class="option" href="./destination-moon.html"><span>01</span>
+            <p>DESTINATION</p>
+          </a></li>
+        <li><a class="option" href="./crew-commander.html"><span>02</span>
+            <p>CREW</p>
+          </a></li>
+        <li><a class="option" href="./technology-capsule.html"><span>03</span>
+            <p>TECHNOLOGY</p>
+          </a></li>
+      </ul>
+      <div class="toggle_btn"><img src="assets/shared/icon-hamburger.svg"></div>
+    </nav>
+
+    <div class="dropdown">
+      <ul class="droplinks">
+        <li><a class="dropoption" href="./index.html"><span>00</span>
+            <p>HOME</p>
+          </a></li>
+        <li><a class="dropoption" href="./destination-moon.html"><span>01</span>
+            <p>DESTINATION</p>
+          </a></li>
+        <li><a class="dropoption" href="./crew-commander.html"><span>02</span>
+            <p>CREW</p>
+          </a></li>
+        <li><a class="dropoption" href="./technology-capsule.html"><span>03</span>
+            <p>TECHNOLOGY</p>
+          </a></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div class="left">
+      <div class="para">
+        <h3>SO, YOU WANT TO TRAVEL TO</h3>
+        <h1>SPACE</h1>
+        Let’s face it; if you want to go to space, you might as well genuinely go to
+        outer space and not hover kind of on the edge of it. Well sit back, and relax
+        because we’ll give you a truly out of this world experience!
+      </div>
+    </div>
+    <div class="right">
+      <a href="./index.html">
+        <p>Explore</p>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    let dropdown = document.querySelector(".dropdown");
+    let toggle_btn = document.querySelector(".toggle_btn");
+    toggle_btn.addEventListener("click", function () {
+      dropdown.classList.toggle("open");
+    })
+  </script>
+</body>
+
+</html>

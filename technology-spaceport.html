@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+
+  <title>Frontend Mentor | Space tourism website</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;1,600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Barlow', sans-serif;
+    }
+
+    body {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: end;
+      justify-content: center;
+      flex-direction: column;
+      background-image: url(./assets/technology/background-technology-desktop.jpg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    header {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 0;
+      margin: 0 auto;
+    }
+
+    nav {
+      width: 90%;
+      height: 100%;
+      margin-top: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.2vw;
+
+
+
+    }
+
+    .line {
+      background-color: rgba(255, 255, 255, 0.4);
+      height: 2px;
+      width: 50vw;
+      margin-left: 9vw;
+    }
+
+    .links {
+      display: flex;
+
+    }
+
+
+    .toggle_btn {
+      cursor: pointer;
+      display: none;
+
+    }
+
+    a {
+      display: flex;
+      text-decoration: none;
+
+    }
+
+    .links {
+      list-style: none;
+      font-weight: 700;
+      letter-spacing: 2px;
+      backdrop-filter: blur(23px);
+
+    }
+
+    .links li::after {
+      content: "";
+      width: 100%;
+      height: 3.6px;
+      background-color: rgb(232, 229, 229);
+      display: none;
+    }
+
+    .links li:hover::after {
+      display: block;
+    }
+
+    .option {
+      color: rgb(210, 197, 197);
+      margin: 23px;
+
+    }
+
+    .option p {
+      margin-left: 5px;
+
+    }
+
+    .dropdown {
+      position: absolute;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      width: 40%;
+      top: 0;
+      right: 0;
+      font-size: 23px;
+      font-weight: 800;
+      display: none;
+
+    }
+
+    .dropdown.open {
+      display: block;
+      justify-content: center;
+      height: 100vh;
+      z-index: 2;
+      backdrop-filter: blur(16px);
+
+    }
+
+    .dropdown p {
+      margin-left: 23px;
+    }
+
+    .droplinks {
+      margin-top: 150px;
+
+    }
+
+    .dropdown ul {
+      list-style: none;
+    }
+
+    .dropoption {
+      color: rgb(210, 197, 197);
+      margin: 30px auto 0 40px;
+
+    }
+
+    main {
+      width: 85%;
+      display: flex;
+      color: white;
+      margin-top: 100px;
+    }
+
+    .left {
+      width: 50%;
+    }
+
+    .meet {
+      display: flex;
+      font-size: 1.7vw;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin-bottom: 40px
+    }
+
+
+    .meet p {
+      font-family: 'Barlow Condensed', serif;
+    }
+
+    .num {
+      margin-right: 10px;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .now {
+      display: flex;
+
+    }
+
+    .side {
+      display: flex;
+      flex-direction: column;
+      margin-left: 20px;
+    }
+
+    .term {
+      font-size: 1.4em;
+    }
+
+    .space {
+      font-size: 4.5vw;
+      font-family: 'Bellefair', serif;
+      padding-bottom: 30px;
+      padding-top: 10px;
+    }
+
+    .para {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2em;
+      padding-right: 10vw;
+      padding-bottom: 4vw;
+
+    }
+
+    .side {
+      padding-left: 20px;
+    }
+
+
+
+    .right {
+      width: 50%;
+
+      display: flex;
+
+    }
+
+    .right img {
+      width: 100%;
+      height: 100%;
+
+    }
+
+    .innerlinks {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+
+    }
+
+    .innerlinks p {
+      padding: 10px 17px;
+      color: white;
+      border-radius: 50%;
+      border: 4px solid rgba(209, 207, 207, 0.733);
+      font-size: 20px;
+
+    }
+
+    .innerlinks p.selected {
+      color: black;
+      background-color: white;
+    }
+
+    @media (max-width:1023px) {
+      main {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width:1100px) {
+      main {
+        width: 90%;
+      }
+
+    }
+
+    @media (max-width:850px) {
+      .links {
+        display: none;
+      }
+
+      .toggle_btn {
+        display: block;
+        z-index: 3;
+      }
+    }
+
+    @media (max-width:786px) {
+      body {
+        background-image: url(./assets/technology/background-technology-tablet.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+      }
+
+      main {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column-reverse;
+        text-align: center;
+
+      }
+
+
+      .right {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 200px;
+      }
+
+      .innerlinks {
+        order: 4;
+        margin-bottom: 20px;
+        justify-content: space-between;
+        width: 200px;
+      }
+
+      .term {
+        font-size: 4.5vw;
+      }
+
+      .space {
+        font-size: 9vw;
+      }
+
+      .meet {
+        margin-top: 23px;
+        font-size: 1.5em;
+      }
+
+      .now {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+      }
+
+      .innerlinks {
+        flex-direction: row;
+      }
+
+      .side {
+        margin-left: 0;
+        padding: 0;
+      }
+
+      .para {
+        padding: 2vw;
+      }
+
+
+      .line {
+        display: none;
+      }
+    }
+
+    @media (max-width:701px) {
+      .dropdown {
+        width: 50%;
+      }
+
+    }
+
+    @media (max-width:701px) {
+      .right {
+        margin-top: 120px;
+      }
+    }
+
+
+    @media (max-width:488px) {
+      .dropdown {
+        width: 60%;
+      }
+    }
+
+
+    @media (max-width:480px) {
+      body {
+        background-image: url(./assets/technology/background-technology-mobile.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+
+      }
+
+      .meet {
+        visibility: hidden;
+      }
+    }
+
+    @media (max-width:360px) {
+      .dropdown {
+        width: 93%;
+      }
+
+    }
+
+    @media (max-width:360px) {}
+
+    @media (max-width:240px) {
+      .dropdown {
+        width: 100%;
+      }
+
+
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <img class="logo" src="assets/shared/logo.svg">
+      <div class="line"></div>
+      <ul class="links">
+        <li><a class="option" href="./index.html"><span>00</span>
+            <p>HOME</p>
+          </a></li>
+        <li><a class="option" href="./destination-moon.html"><span>01</span>
+            <p>DESTINATION</p>
+          </a></li>
+        <li><a class="option" href="./crew-commander.html"><span>02</span>
+            <p>CREW</p>
+          </a></li>
+        <li><a class="option" href="./technology-capsule.html"><span>03</span>
+            <p>TECHNOLOGY</p>
+          </a></li>
+      </ul>
+      <div class="toggle_btn"><img src="assets/shared/icon-hamburger.svg"></div>
+    </nav>
+
+    <div class="dropdown">
+      <ul class="droplinks">
+        <li><a class="dropoption" href="./index.html"><span>00</span>
+            <p>HOME</p>
+          </a></li>
+        <li><a class="dropoption" href="./destination-moon.html"><span>01</span>
+            <p>DESTINATION</p>
+          </a></li>
+        <li><a class="dropoption" href="./crew-commander.html"><span>02</span>
+            <p>CREW</p>
+          </a></li>
+        <li><a class="dropoption" href="./technology-capsule.html"><span>03</span>
+            <p>TECHNOLOGY</p>
+          </a></li>
+      </ul>
+    </div>
+  </header>
+  <main>
+    <div class="left">
+      <div class="meet">
+        <p class="num">03</p>
+        <p class="cont">SPACE LAUNCH 101</p>
+      </div>
+      <div class="now">
+        <div class="innerlinks">
+          <p id="spaceLink">1</p>
+          <p id="capsuleLink">2</p>
+          <p id="vehicleLink">3</p>
+        </div>
+
+        <div class="side">
+          <div class="term">THE TERMINOLOGY...</div>
+          <div class="space">SPACEPORT</div>
+
+          <div class="para">A spaceport or cosmodrome is a site for launching (or receiving) spacecraft,
+            by analogy to the seaport for ships or airport for aircraft. Based in the
+            famous Cape Canaveral, our spaceport is ideally situated to take advantage
+            of the Earth’s rotation for launch.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right"><img src="assets/technology/image-spaceport-landscape.jpg"></div>
+  </main>
+  <script>
+    // humberg
+    let dropdown = document.querySelector(".dropdown");
+    let toggle_btn = document.querySelector(".toggle_btn");
+    toggle_btn.addEventListener("click", function () {
+      dropdown.classList.toggle("open");
+    });
+    //toggle
+
+    let spaceLink = document.getElementById("spaceLink");
+    let capsuleLink = document.getElementById("capsuleLink");
+    let vehicleLink = document.getElementById("vehicleLink");
+    let space = document.getElementsByClassName("space")[0];
+    let para = document.getElementsByClassName("para")[0];
+    let img = document.getElementsByClassName("image")[0];
+
+    //capsule
+
+
+    capsuleLink.addEventListener("click", function () {
+      space.textContent = "SPACE CAPSULE";
+      para.textContent = "A space capsule is an often-crewed spacecraft that uses a blunt-body reentry capsule to reenter the Earth's atmosphere without wings. Our capsule is where you'll spend your time during the flight. It includes a space gym, cinema, and plenty of other activities to keep you entertained.";
+      img.src = "assets/technology/image-space-capsule-landscape.jpg";
+      // spaceLink.classList.remove("selected");
+      // capsuleLink.classList.add("selected");
+      // vehicleLink.classList.remove("selected");
+    });
+
+    vehicleLink.addEventListener("click", function () {
+      space.textContent = "LAUNCH VEHICLE";
+      para.textContent = "A launch vehicle or carrier rocket is a rocket-propelled vehicle used to carry a payload from Earth's surface to space, usually to Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful in operation. Standing 150 metres tall, it's quite an awe-inspiring sight on the launch pad!";
+      // spaceLink.classList.remove("selected");
+      // capsuleLink.classList.remove("selected");
+      // vehicleLink.classList.add("selected");
+    });
+
+    spaceLink.addEventListener("click", function () {
+      space.textContent = "SPACEPORT";
+      para.textContent = "A spaceport or cosmodrome is a site for launching (or receiving) spacecraft, by analogy to the seaport for ships or airport for aircraft. Based in the famous Cape Canaveral, our spaceport is ideally situated to take advantage of the Earth’s rotation for launch.";
+      img.src = "assets/technology/image-spaceport-landscape.jpg";
+      // spaceLink.classList.add("selected");
+      // capsuleLink.classList.remove("selected");
+      // vehicleLink.classList.remove("selected");
+    });
+
+    const innerlinkParagraphs = document.querySelectorAll(".innerlinks p");
+
+    // Add a click event listener to each <p> element
+    innerlinkParagraphs.forEach((paragraph) => {
+      paragraph.addEventListener("click", function () {
+        // Remove the .selected class from all <p> elements
+        innerlinkParagraphs.forEach((p) => p.classList.remove("selected"));
+
+        // Add the .selected class to the clicked <p> element
+        this.classList.add("selected");
+      });
+    });
+
+  </script>
+</body>
+
+</html>
